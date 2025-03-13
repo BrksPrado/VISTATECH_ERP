@@ -1,7 +1,8 @@
+package com.vistatech.estoque;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -49,7 +50,7 @@ public class EstoqueView extends JFrame {
 
         // Painel do formulário
         JPanel painelFormulario = new JPanel(new GridBagLayout());
-        painelFormulario.setBorder(BorderFactory.createTitledBorder("Cadastro de Produto"));
+        painelFormulario.setBorder(BorderFactory.createTitledBorder("Cadastro de com.estoquevistatech.Produto"));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
         gbc.fill = GridBagConstraints.HORIZONTAL;

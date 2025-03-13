@@ -1,3 +1,5 @@
+package com.vistatech.estoque;
+
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

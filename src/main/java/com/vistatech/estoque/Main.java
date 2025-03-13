@@ -1,3 +1,5 @@
+package com.vistatech.estoque;
+
 import javax.swing.*;
 
 public class Main {
@@ -7,6 +9,6 @@ public class Main {
             EstoqueView view = new EstoqueView();
             new EstoqueController(model, view);
             view.setVisible(true);
-        }); //test
+        });
     }
 }
