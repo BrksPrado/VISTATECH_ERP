@@ -30,6 +30,7 @@ public class DBconnection {
   `preco_custo` double NOT NULL,
   `preco_venda` double NOT NULL,
   `quantidade` int NOT NULL,
+  `tipo` VARCHAR(50),
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
      */

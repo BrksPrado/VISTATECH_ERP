@@ -2,11 +2,6 @@ package com.vistatech.relatorio;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
 import com.vistatech.estoque.Produto;
 import com.vistatech.estoque.EstoqueModel;
 
@@ -67,13 +62,12 @@ public class RelatorioService {
 
             document.add(tabelaCabecalho);
 
-
             // Cria uma tabela para os dados
-            PdfPTable table = new PdfPTable(5); // 5 colunas: ID, Nome, Preço Custo, Preço Venda, Quantidade
+            PdfPTable table = new PdfPTable(6); // 6 colunas: ID, Nome, Preço Custo, Preço Venda, Quantidade, Tipo
             table.setWidthPercentage(100);
 
             // Cabeçalho da tabela
-            String[] cabecalhos = {"ID", "Nome", "Preço de Custo", "Preço de Venda", "Quantidade"};
+            String[] cabecalhos = {"ID", "Nome", "Preço de Custo", "Preço de Venda", "Quantidade", "Tipo"};
             for (String cabecalhoColuna : cabecalhos) {
                 PdfPCell cell = new PdfPCell(new Paragraph(cabecalhoColuna, fonteCabecalho));
                 cell.setBackgroundColor(azulVistaTech);
@@ -88,12 +82,13 @@ public class RelatorioService {
                 table.addCell(new PdfPCell(new Paragraph(String.format("R$ %.2f", produto.getPrecoCusto()), fonteDados)));
                 table.addCell(new PdfPCell(new Paragraph(String.format("R$ %.2f", produto.getPrecoVenda()), fonteDados)));
                 table.addCell(new PdfPCell(new Paragraph(String.valueOf(produto.getQuantidade()), fonteDados)));
+                table.addCell(new PdfPCell(new Paragraph(produto.getTipo(), fonteDados))); // Adiciona o campo tipo
             }
 
             // Adiciona a tabela ao documento
             document.add(table);
 
-            System.out.println("Relatório PDF gerado com sucesso: relatorio_produtos.pdf");
+            System.out.println("Relatório PDF gerado com sucesso: relatorio_estoque.pdf");
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
             System.out.println("Erro ao gerar o relatório PDF.");

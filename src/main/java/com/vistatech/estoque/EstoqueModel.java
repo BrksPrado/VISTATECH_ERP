@@ -20,7 +20,8 @@ public class EstoqueModel {
                     double precoCusto = rs.getDouble("preco_custo");
                     double precoVenda = rs.getDouble("preco_venda");
                     int quantidade = rs.getInt("quantidade");
-                    produtos.add(new Produto(id, nome, precoCusto, precoVenda, quantidade));
+                    String tipo = rs.getString("tipo"); // Adiciona o campo tipo
+                    produtos.add(new Produto(id, nome, precoCusto, precoVenda, quantidade, tipo));
                 }
             }
         } catch (SQLException e) {
@@ -32,12 +33,13 @@ public class EstoqueModel {
 
     public void adicionarProduto(Produto produto) {
         try (Connection conn = DBconnection.getConnection()) {
-            String sql = "INSERT INTO produtos (nome, preco_custo, preco_venda, quantidade) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO produtos (nome, preco_custo, preco_venda, quantidade, tipo) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
                 stmt.setString(1, produto.getNome());
                 stmt.setDouble(2, produto.getPrecoCusto());
                 stmt.setDouble(3, produto.getPrecoVenda());
                 stmt.setInt(4, produto.getQuantidade());
+                stmt.setString(5, produto.getTipo()); // Adiciona o campo tipo
                 stmt.executeUpdate();
 
                 // Recupera o ID gerado
@@ -54,13 +56,14 @@ public class EstoqueModel {
 
     public void atualizarProduto(Produto produto) {
         try (Connection conn = DBconnection.getConnection()) {
-            String sql = "UPDATE produtos SET nome = ?, preco_custo = ?, preco_venda = ?, quantidade = ? WHERE id = ?";
+            String sql = "UPDATE produtos SET nome = ?, preco_custo = ?, preco_venda = ?, quantidade = ?, tipo = ? WHERE id = ?";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, produto.getNome());
                 stmt.setDouble(2, produto.getPrecoCusto());
                 stmt.setDouble(3, produto.getPrecoVenda());
                 stmt.setInt(4, produto.getQuantidade());
-                stmt.setInt(5, produto.getId());
+                stmt.setString(5, produto.getTipo()); // Adiciona o campo tipo
+                stmt.setInt(6, produto.getId());
                 stmt.executeUpdate();
             }
         } catch (SQLException e) {

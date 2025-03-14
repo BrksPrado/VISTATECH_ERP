@@ -8,33 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c78edeb0-a5d8-433d-886d-8a5af9479b7b" name="Changes" comment="Add v1. Relatório Estoque - 12/03">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/relatorio/RelatorioEstoqueMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/relatorio/RelatorioService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/utils/PopulaBancoDados.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/whitelogo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DBconnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/estoque/DBconnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EstoqueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/estoque/EstoqueController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EstoqueModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/estoque/EstoqueModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EstoqueView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/estoque/EstoqueView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/estoque/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/estoque/Produto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/estoque/DBconnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/estoque/DBconnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/estoque/EstoqueModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/estoque/EstoqueModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/estoque/EstoqueView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/estoque/EstoqueView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/estoque/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/estoque/Produto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/relatorio/RelatorioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/relatorio/RelatorioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/utils/PopulaBancoDados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/utils/PopulaBancoDados.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DBconnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EstoqueController$AdicionarListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EstoqueController$AtualizarListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EstoqueController$LimparListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EstoqueController$RemoverListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EstoqueController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EstoqueModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EstoqueView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EstoqueView$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EstoqueView$ModeloTabela.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EstoqueView.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Produto.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,16 +39,16 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "history": [
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
     {
-      "author": "GusCfer"
+      &quot;author&quot;: &quot;GusCfer&quot;
     }
   ],
-  "lastFilter": {
-    "author": "GusCfer"
+  &quot;lastFilter&quot;: {
+    &quot;author&quot;: &quot;GusCfer&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/BrksPrado/VISTATECH_ERP.git&quot;,
@@ -97,10 +80,15 @@
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;estoque&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vitorio/Downloads/VISTATECH_ERP-master (1)/VISTATECH_ERP-master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/vitorio/OneDrive/Documentos/Projeto_Sites/java/Pessoais/VTERP-Estoque/src/main/resources&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vitorio\OneDrive\Documentos\Projeto_Sites\java\Pessoais\VTERP-Estoque\src\main\resources" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.estoque.Main" />
@@ -160,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741786326737</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add v1. Relatório Estoque - 12/03">
+      <option name="closed" value="true" />
+      <created>1741827932854</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1741827932854</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

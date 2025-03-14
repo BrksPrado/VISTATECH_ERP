@@ -11,8 +11,9 @@ import java.util.List;
 
 public class EstoqueView extends JFrame {
     private JTextField txtNome, txtPrecoCusto, txtPrecoVenda, txtQuantidade;
+    private JComboBox<String> comboBoxTipo;
     private JTable tabela;
-    private ModeloTabela modelo; // Usando a classe interna
+    private ModeloTabela modelo;
     private JButton btnAdicionar, btnAtualizar, btnRemover, btnLimpar;
     private JLabel lblLogo;
 
@@ -40,7 +41,7 @@ public class EstoqueView extends JFrame {
         JPanel painelCabecalho = new JPanel(new FlowLayout(FlowLayout.LEFT));
         painelCabecalho.setBackground(new Color(59, 89, 182));
 
-        lblLogo = new JLabel(redimensionarImagem("src/main/resources/logotipo.png", 65, 65));
+        lblLogo = new JLabel(redimensionarImagem("src/main/resources/whitelogo.png", 65, 65));
         JLabel lblTitulo = new JLabel("VistaTech ERP");
         lblTitulo.setForeground(Color.WHITE);
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 18));
@@ -50,16 +51,14 @@ public class EstoqueView extends JFrame {
 
         // Painel do formulário
         JPanel painelFormulario = new JPanel(new GridBagLayout());
-        painelFormulario.setBorder(BorderFactory.createTitledBorder("Cadastro de com.estoquevistatech.Produto"));
+        painelFormulario.setBorder(BorderFactory.createTitledBorder("Cadastro de Produto"));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
         gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        // Aumentar a largura do grid atribuindo peso horizontal
         gbc.weightx = 1.0;
         gbc.weighty = 0;
 
-        // Ajusta as posições do formulário
+        // Campos do formulário
         gbc.gridx = 0;
         gbc.gridy = 1;
         painelFormulario.add(new JLabel("Nome:"), gbc);
@@ -88,6 +87,14 @@ public class EstoqueView extends JFrame {
         txtQuantidade = new JTextField(15);
         painelFormulario.add(txtQuantidade, gbc);
 
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        painelFormulario.add(new JLabel("Tipo:"), gbc);
+        gbc.gridx = 1;
+        comboBoxTipo = new JComboBox<>(new String[]{"Armação", "Lente de grau", "Lente de contato", "Óculos de Sol",});
+        comboBoxTipo.setEditable(true);
+        painelFormulario.add(comboBoxTipo, gbc);
+
         // Painel de botões
         JPanel painelBotoes = new JPanel(new GridLayout(2, 2, 5, 5));
 
@@ -112,38 +119,39 @@ public class EstoqueView extends JFrame {
         painelEsquerdo.add(painelBotoes, BorderLayout.SOUTH);
 
         // Painel direito (tabela)
-        modelo = new ModeloTabela(); // Usando a classe interna
+        modelo = new ModeloTabela();
         tabela = new JTable(modelo);
 
-        // Configura a ordenação ao clicar no cabeçalho
         TableRowSorter<ModeloTabela> sorter = new TableRowSorter<>(modelo);
         tabela.setRowSorter(sorter);
 
-        // Ajusta tamanho de exibição das informações da tabela
         tabela.setFont(new Font("Arial", Font.PLAIN, 14));
         tabela.setRowHeight(20);
 
-        // Adiciona um MouseListener à tabela para preencher os campos ao clicar em uma linha
+
+
         tabela.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Obtém a linha selecionada
                 int linhaSelecionada = tabela.getSelectedRow();
-
-                // Verifica se uma linha foi selecionada
                 if (linhaSelecionada != -1) {
-                    // Obtém os valores da linha selecionada
-                    int id = (int) tabela.getValueAt(linhaSelecionada, 0);
-                    String nome = (String) tabela.getValueAt(linhaSelecionada, 1);
-                    double precoCusto = (double) tabela.getValueAt(linhaSelecionada, 2);
-                    double precoVenda = (double) tabela.getValueAt(linhaSelecionada, 3);
-                    int quantidade = (int) tabela.getValueAt(linhaSelecionada, 4);
+                    // Converte o índice da visão para o índice do modelo
+                    int modelIndex = tabela.convertRowIndexToModel(linhaSelecionada);
+
+                    // Obtém os valores da linha selecionada usando o índice do modelo
+                    int id = (int) modelo.getValueAt(modelIndex, 0); // ID
+                    String nome = (String) modelo.getValueAt(modelIndex, 1); // Nome
+                    double precoCusto = (double) modelo.getValueAt(modelIndex, 2); // Preço de Custo
+                    double precoVenda = (double) modelo.getValueAt(modelIndex, 3); // Preço de Venda
+                    int quantidade = (int) modelo.getValueAt(modelIndex, 4); // Quantidade
+                    String tipo = (String) modelo.getValueAt(modelIndex, 5); // Tipo
 
                     // Preenche os campos do formulário
                     txtNome.setText(nome);
-                    txtPrecoCusto.setText(String.format("%.2f", precoCusto)); // Formata com duas casas decimais
-                    txtPrecoVenda.setText(String.format("%.2f", precoVenda)); // Formata com duas casas decimais
+                    txtPrecoCusto.setText(String.format("%.2f", precoCusto));
+                    txtPrecoVenda.setText(String.format("%.2f", precoVenda));
                     txtQuantidade.setText(String.valueOf(quantidade));
+                    comboBoxTipo.setSelectedItem(tipo);
                 }
             }
         });
@@ -151,18 +159,16 @@ public class EstoqueView extends JFrame {
         JScrollPane scrollPane = new JScrollPane(tabela);
         scrollPane.setBorder(BorderFactory.createTitledBorder("Lista de Produtos"));
 
-        // Divisão vertical entre o formulário e a tabela
+
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, painelEsquerdo, scrollPane);
         splitPane.setDividerLocation(300);
         splitPane.setResizeWeight(0.3);
         splitPane.setEnabled(false);
 
-        // Adiciona ao frame
         add(painelCabecalho, BorderLayout.NORTH);
         add(splitPane, BorderLayout.CENTER);
     }
 
-    // Método para aplicar o estilo aos botões
     private void styleButton(JButton button) {
         button.setBackground(new Color(59, 89, 182));
         button.setForeground(Color.WHITE);
@@ -171,7 +177,6 @@ public class EstoqueView extends JFrame {
         button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         button.setPreferredSize(new Dimension(150, 40));
 
-        // Efeitos de hover
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -209,6 +214,7 @@ public class EstoqueView extends JFrame {
     public void setLimparListener(ActionListener listener) {
         btnLimpar.addActionListener(listener);
     }
+
     public Produto getProdutoFormulario() {
         resetarCoresCampos();
 
@@ -216,10 +222,10 @@ public class EstoqueView extends JFrame {
         String precoCustoText = txtPrecoCusto.getText().trim();
         String precoVendaText = txtPrecoVenda.getText().trim();
         String quantidadeText = txtQuantidade.getText().trim();
+        String tipo = comboBoxTipo.getSelectedItem().toString().trim();
 
         boolean erro = false;
 
-        // Validação do campo "Nome"
         if (nome.isEmpty()) {
             txtNome.setBackground(new Color(255, 200, 200));
             if (!erro) {
@@ -228,7 +234,6 @@ public class EstoqueView extends JFrame {
             }
         }
 
-        // Validação do campo "Preço de Custo"
         Double precoCusto = validarEConverterPreco(precoCustoText, txtPrecoCusto);
         if (precoCusto == null || precoCusto < 0) {
             if (!erro) {
@@ -236,7 +241,6 @@ public class EstoqueView extends JFrame {
             }
         }
 
-        // Validação do campo "Preço de Venda"
         Double precoVenda = validarEConverterPreco(precoVendaText, txtPrecoVenda);
         if (precoVenda == null || precoVenda < 0) {
             if (!erro) {
@@ -244,12 +248,11 @@ public class EstoqueView extends JFrame {
             }
         }
 
-        // Validação do campo "Quantidade"
         int quantidade = 0;
         try {
             quantidade = Integer.parseInt(quantidadeText);
             if (quantidade < 0) {
-                throw new NumberFormatException(); // Quantidade não pode ser negativa
+                throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
             txtQuantidade.setBackground(new Color(255, 200, 200));
@@ -259,7 +262,6 @@ public class EstoqueView extends JFrame {
             }
         }
 
-        // Se houver erro, exibe uma mensagem e retorna null
         if (erro) {
             JOptionPane.showMessageDialog(this, "Por favor, insira valores válidos:\n" +
                     "- Nome: Não pode estar vazio.\n" +
@@ -268,45 +270,36 @@ public class EstoqueView extends JFrame {
             return null;
         }
 
-        return new Produto(0, nome, precoCusto, precoVenda, quantidade);
+        return new Produto(0, nome, precoCusto, precoVenda, quantidade, tipo);
     }
 
     private Double validarEConverterPreco(String texto, JTextField campo) {
-        // Remove o símbolo de moeda (R$) e espaços em branco
         texto = texto.replace("R$", "").trim();
-
-        // Substitui a vírgula por ponto para conversão
         texto = texto.replace(",", ".");
 
         try {
-            // Verifica se o valor tem mais de duas casas decimais
             if (temMaisDeDuasCasasDecimais(texto)) {
-                campo.setBackground(new Color(255, 200, 200)); // Destaca o campo em vermelho
-                campo.requestFocus(); // Coloca o foco no campo
-                return null; // Retorna null para indicar erro
+                campo.setBackground(new Color(255, 200, 200));
+                campo.requestFocus();
+                return null;
             }
-
-            // Converte para double
             return Double.parseDouble(texto);
         } catch (NumberFormatException e) {
-            campo.setBackground(new Color(255, 200, 200)); // Destaca o campo em vermelho
-            campo.requestFocus(); // Coloca o foco no campo
-            return null; // Retorna null se não for um número válido
+            campo.setBackground(new Color(255, 200, 200));
+            campo.requestFocus();
+            return null;
         }
     }
 
-    // Método para verificar se um valor tem mais de duas casas decimais
     private boolean temMaisDeDuasCasasDecimais(String valor) {
         int indexPonto = valor.indexOf(".");
         if (indexPonto != -1) {
-            // Conta o número de caracteres após o ponto
             int casasDecimais = valor.length() - indexPonto - 1;
             return casasDecimais > 2;
         }
-        return false; // Não tem casas decimais
+        return false;
     }
 
-    // Método para restaurar a cor padrão dos campos
     private void resetarCoresCampos() {
         txtNome.setBackground(Color.WHITE);
         txtPrecoCusto.setBackground(Color.WHITE);
@@ -314,54 +307,60 @@ public class EstoqueView extends JFrame {
         txtQuantidade.setBackground(Color.WHITE);
     }
 
-
-
     public void limparFormulario() {
         txtNome.setText("");
         txtPrecoCusto.setText("");
         txtPrecoVenda.setText("");
         txtQuantidade.setText("");
+        comboBoxTipo.setSelectedIndex(0);
     }
 
     public void adicionarProdutoTabela(Produto produto) {
-        modelo.addRow(new Object[]{produto.getId(), produto.getNome(), produto.getPrecoCusto(), produto.getPrecoVenda(), produto.getQuantidade()});
+        modelo.addRow(new Object[]{produto.getId(), produto.getNome(), produto.getPrecoCusto(), produto.getPrecoVenda(), produto.getQuantidade(), produto.getTipo()});
     }
 
     public void atualizarProdutoTabela(Produto produto) {
         int linhaSelecionada = tabela.getSelectedRow();
         if (linhaSelecionada != -1) {
-            modelo.setValueAt(produto.getNome(), linhaSelecionada, 1);
-            modelo.setValueAt(produto.getPrecoCusto(), linhaSelecionada, 2);
-            modelo.setValueAt(produto.getPrecoVenda(), linhaSelecionada, 3);
-            modelo.setValueAt(produto.getQuantidade(), linhaSelecionada, 4);
+            // Converte o índice da visão para o índice do modelo
+            int modelIndex = tabela.convertRowIndexToModel(linhaSelecionada);
+            modelo.setValueAt(produto.getNome(), modelIndex, 1);
+            modelo.setValueAt(produto.getPrecoCusto(), modelIndex, 2);
+            modelo.setValueAt(produto.getPrecoVenda(), modelIndex, 3);
+            modelo.setValueAt(produto.getQuantidade(), modelIndex, 4);
+            modelo.setValueAt(produto.getTipo(), modelIndex, 5);
         }
     }
 
     public void removerProdutoTabela() {
         int linhaSelecionada = tabela.getSelectedRow();
         if (linhaSelecionada != -1) {
-            modelo.removeRow(linhaSelecionada);
+            // Converte o índice da visão para o índice do modelo
+            int modelIndex = tabela.convertRowIndexToModel(linhaSelecionada);
+            modelo.removeRow(modelIndex);
         }
     }
 
     public int getProdutoSelecionadoId() {
         int linhaSelecionada = tabela.getSelectedRow();
         if (linhaSelecionada != -1) {
-            return (int) modelo.getValueAt(linhaSelecionada, 0);
+            // Converte o índice da visão para o índice do modelo
+            int modelIndex = tabela.convertRowIndexToModel(linhaSelecionada);
+            return (int) modelo.getValueAt(modelIndex, 0); // Retorna o ID do modelo
         }
         return -1;
     }
 
     public void carregarProdutos(List<Produto> produtos) {
         for (Produto produto : produtos) {
-            modelo.addRow(new Object[]{produto.getId(), produto.getNome(), produto.getPrecoCusto(), produto.getPrecoVenda(), produto.getQuantidade()});
+            modelo.addRow(new Object[]{produto.getId(), produto.getNome(), produto.getPrecoCusto(), produto.getPrecoVenda(), produto.getQuantidade(), produto.getTipo()});
         }
     }
 
     // Classe interna ModeloTabela
     class ModeloTabela extends DefaultTableModel {
         public ModeloTabela() {
-            super(new String[]{"ID", "Nome", "Preço de Custo (R$)", "Preço de Venda (R$)", "Quantidade"}, 0);
+            super(new String[]{"ID", "Nome", "Preço de Custo (R$)", "Preço de Venda (R$)", "Quantidade", "Tipo"}, 0);
         }
 
         @Override
@@ -372,6 +371,7 @@ public class EstoqueView extends JFrame {
                 case 2: return Double.class;   // Preço de Custo
                 case 3: return Double.class;   // Preço de Venda
                 case 4: return Integer.class;  // Quantidade
+                case 5: return String.class;   // Tipo
                 default: return Object.class;
             }
         }
