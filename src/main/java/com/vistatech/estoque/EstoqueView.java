@@ -1,31 +1,67 @@
 package com.vistatech.estoque;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.net.URL;
 import java.util.List;
 
 public class EstoqueView extends JFrame {
-    private JTextField txtNome, txtPrecoCusto, txtPrecoVenda, txtQuantidade;
-    private JComboBox<String> comboBoxTipo;
+    private JTextField txtPesquisa;
     private JTable tabela;
     private ModeloTabela modelo;
-    private JButton btnAdicionar, btnAtualizar, btnRemover, btnLimpar;
+    private JButton btnOcultar;
+    private JButton btnTornarVisivel;
+    private JButton btnReporEstoque;
+    private JComboBox<String> comboBoxTipoPesquisa;
+    private JComboBox<String> comboBoxExibicao;
     private JLabel lblLogo;
+    private Timer timerPesquisa; // Timer para adicionar um delay na pesquisa
+    private EstoqueModel model;
 
-    public EstoqueView() {
-        setTitle("Módulo de Estoque");
+    private ImageIcon iconeCheckmark;
+    private ImageIcon iconePencil;
+
+    // Construtor recebe EstoqueModel como parâmetro
+    public EstoqueView(EstoqueModel model) {
+        this.model = model;
+        setTitle("Consulta de Estoque");
         setSize(800, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
+        iconeCheckmark = carregarIcone("/icons/check.png");
+        iconePencil = carregarIcone("/icons/edited.png");
+
+        // Verifique se os ícones foram carregados corretamente
+        if (iconeCheckmark == null) {
+            System.err.println("Erro ao carregar ícone checkmark.png");
+        }
+        if (iconePencil == null) {
+            System.err.println("Erro ao carregar ícone pencil.png");
+        }
+
+
         setLayout(new BorderLayout(10, 10));
         initLookAndFeel();
         initComponents();
+    }
+    private ImageIcon carregarIcone(String caminho) {
+        URL url = getClass().getResource(caminho);
+        if (url == null) {
+            System.err.println("Recurso não encontrado: " + caminho);
+            return null;
+        }
+        // Carrega o ícone original
+        ImageIcon icon = new ImageIcon(url);
+
+        Image imagemRedimensionada = icon.getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT);
+        return new ImageIcon(imagemRedimensionada);
     }
 
     private void initLookAndFeel() {
@@ -42,83 +78,147 @@ public class EstoqueView extends JFrame {
         painelCabecalho.setBackground(new Color(59, 89, 182));
 
         lblLogo = new JLabel(redimensionarImagem("src/main/resources/whitelogo.png", 65, 65));
-        JLabel lblTitulo = new JLabel("VistaTech ERP");
+        JLabel lblTitulo = new JLabel("VistaTech ERP - Consulta de Estoque");
         lblTitulo.setForeground(Color.WHITE);
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 18));
 
         painelCabecalho.add(lblLogo);
         painelCabecalho.add(lblTitulo);
 
-        // Painel do formulário
-        JPanel painelFormulario = new JPanel(new GridBagLayout());
-        painelFormulario.setBorder(BorderFactory.createTitledBorder("Cadastro de Produto"));
+        // Painel de pesquisa (esquerda)
+        JPanel painelPesquisa = new JPanel(new GridBagLayout());
+        painelPesquisa.setBorder(BorderFactory.createTitledBorder("Pesquisar"));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weightx = 1.0;
         gbc.weighty = 0;
 
-        // Campos do formulário
+        // ComboBox para selecionar o tipo de pesquisa
+        JLabel lblPesquisarPor = new JLabel("Pesquisar Por:");
+        lblPesquisarPor.setForeground(Color.BLACK); // Cor do texto
+        lblPesquisarPor.setFont(new Font("Arial", Font.BOLD, 14)); // Fonte
+
+        // Adicionar a legenda ao painel de pesquisa
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1;
+        painelPesquisa.add(lblPesquisarPor, gbc);
+
+        gbc.gridx = 1;
+        // ComboBox para selecionar o tipo de pesquisa
+        comboBoxTipoPesquisa = new JComboBox<>(new String[]{
+                "Nome do Produto",
+                "Quantidade (menos que)",
+                "Quantidade (mais que)"
+        });
+        comboBoxTipoPesquisa.addActionListener(e -> {
+            txtPesquisa.setText(""); // Limpa o campo de pesquisa
+        });
+        painelPesquisa.add(comboBoxTipoPesquisa, gbc);
+
+        // Campo de pesquisa
+        JLabel lblTermo = new JLabel("Termo de pesquisa:");
+        lblTermo.setForeground(Color.BLACK); // Cor do texto
+        lblTermo.setFont(new Font("Arial", Font.BOLD, 14)); // Fonte
+
+        // Adicionar a legenda ao painel de pesquisa
         gbc.gridx = 0;
         gbc.gridy = 1;
-        painelFormulario.add(new JLabel("Nome:"), gbc);
-        gbc.gridx = 1;
-        txtNome = new JTextField(15);
-        painelFormulario.add(txtNome, gbc);
+        gbc.gridwidth = 1;
+        painelPesquisa.add(lblTermo, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        painelFormulario.add(new JLabel("Preço de Custo:"), gbc);
         gbc.gridx = 1;
-        txtPrecoCusto = new JTextField(15);
-        painelFormulario.add(txtPrecoCusto, gbc);
+        txtPesquisa = new JTextField(20);
+        painelPesquisa.add(txtPesquisa, gbc);
 
+
+        // Adicionar uma legenda para o JComboBox
+        JLabel lblExibicao = new JLabel("Exibir:");
+        lblExibicao.setForeground(Color.BLACK); // Cor do texto
+        lblExibicao.setFont(new Font("Arial", Font.BOLD, 14)); // Fonte
+
+        // Adicionar a legenda ao painel de pesquisa
         gbc.gridx = 0;
         gbc.gridy = 3;
-        painelFormulario.add(new JLabel("Preço de Venda:"), gbc);
-        gbc.gridx = 1;
-        txtPrecoVenda = new JTextField(15);
-        painelFormulario.add(txtPrecoVenda, gbc);
+        gbc.gridwidth = 1;
+        painelPesquisa.add(lblExibicao, gbc);
 
+        // Adicionar um JComboBox para alternar entre produtos visíveis, ocultos e movimentações
+        comboBoxExibicao = new JComboBox<>(new String[]{"Produtos Visíveis", "Produtos Ocultos", "Movimentações de Estoque"});
+        styleComboBox(comboBoxExibicao); // Aplicar o estilo personalizado
+        comboBoxExibicao.addActionListener(e -> {
+            txtPesquisa.setText("");
+            int indice = comboBoxExibicao.getSelectedIndex();
+            alternarTabela(indice);
+
+        });
+
+        // Adicionar o JComboBox ao painel de pesquisa
         gbc.gridx = 0;
         gbc.gridy = 4;
-        painelFormulario.add(new JLabel("Quantidade:"), gbc);
-        gbc.gridx = 1;
-        txtQuantidade = new JTextField(15);
-        painelFormulario.add(txtQuantidade, gbc);
+        gbc.gridwidth = 2;
+        painelPesquisa.add(comboBoxExibicao, gbc);
 
+        btnOcultar = new JButton("Ocultar Produto");
+        styleButton(btnOcultar);
+        btnOcultar.addActionListener(e -> {
+            int selectedRow = tabela.getSelectedRow();
+            if (selectedRow >= 0) {
+                int id = (int) tabela.getValueAt(selectedRow, 0);
+                ocultarProduto(id);
+            } else {
+                JOptionPane.showMessageDialog(this, "Selecione um produto para ocultar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            }
+        });
+
+        // Adicionar o botão ao painel de pesquisa
         gbc.gridx = 0;
         gbc.gridy = 5;
-        painelFormulario.add(new JLabel("Tipo:"), gbc);
-        gbc.gridx = 1;
-        comboBoxTipo = new JComboBox<>(new String[]{"Armação", "Lente de grau", "Lente de contato", "Óculos de Sol",});
-        comboBoxTipo.setEditable(true);
-        painelFormulario.add(comboBoxTipo, gbc);
+        gbc.gridwidth = 2;
+        painelPesquisa.add(btnOcultar, gbc);
 
-        // Painel de botões
-        JPanel painelBotoes = new JPanel(new GridLayout(2, 2, 5, 5));
+        // Adicionar um botão para tornar o produto visível
+        btnTornarVisivel = new JButton("Tornar Visível");
+        styleButton(btnTornarVisivel);
+        btnTornarVisivel.addActionListener(e -> {
+            int selectedRow = tabela.getSelectedRow();
+            if (selectedRow >= 0) {
+                int id = (int) tabela.getValueAt(selectedRow, 0);
+                tornarProdutoVisivel(id);
+            } else {
+                JOptionPane.showMessageDialog(this, "Selecione um produto para tornar visível.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            }
+        });
 
-        btnAdicionar = new JButton("Adicionar");
-        btnAtualizar = new JButton("Atualizar");
-        btnRemover = new JButton("Remover");
-        btnLimpar = new JButton("Limpar");
+        // Adicionar o botão ao painel de pesquisa
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.gridwidth = 2;
+        painelPesquisa.add(btnTornarVisivel, gbc);
+        // Inicialmente, ocultar o botão "Tornar Visível"
+        btnTornarVisivel.setVisible(false);
 
-        styleButton(btnAdicionar);
-        styleButton(btnAtualizar);
-        styleButton(btnRemover);
-        styleButton(btnLimpar);
+        btnReporEstoque = new JButton("Repor Estoque");
+        styleButton(btnReporEstoque);
+        btnReporEstoque.addActionListener(e -> {
+            int selectedRow = tabela.getSelectedRow();
+            if (selectedRow >= 0) {
+                int produtoId = (int) tabela.getValueAt(selectedRow, 0);
+                reporEstoque(produtoId);
+            } else {
+                JOptionPane.showMessageDialog(this, "Selecione um produto para repor o estoque.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            }
+        });
 
-        painelBotoes.add(btnAdicionar);
-        painelBotoes.add(btnAtualizar);
-        painelBotoes.add(btnRemover);
-        painelBotoes.add(btnLimpar);
+// Adicionar o botão ao painel de pesquisa
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        gbc.gridwidth = 2;
+        painelPesquisa.add(btnReporEstoque, gbc);
 
-        // Painel esquerdo
-        JPanel painelEsquerdo = new JPanel(new BorderLayout(10, 10));
-        painelEsquerdo.add(painelFormulario, BorderLayout.CENTER);
-        painelEsquerdo.add(painelBotoes, BorderLayout.SOUTH);
 
-        // Painel direito (tabela)
+        // Tabela de produtos (direita)
         modelo = new ModeloTabela();
         tabela = new JTable(modelo);
 
@@ -128,45 +228,263 @@ public class EstoqueView extends JFrame {
         tabela.setFont(new Font("Arial", Font.PLAIN, 14));
         tabela.setRowHeight(20);
 
-
-
-        tabela.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                int linhaSelecionada = tabela.getSelectedRow();
-                if (linhaSelecionada != -1) {
-                    // Converte o índice da visão para o índice do modelo
-                    int modelIndex = tabela.convertRowIndexToModel(linhaSelecionada);
-
-                    // Obtém os valores da linha selecionada usando o índice do modelo
-                    int id = (int) modelo.getValueAt(modelIndex, 0); // ID
-                    String nome = (String) modelo.getValueAt(modelIndex, 1); // Nome
-                    double precoCusto = (double) modelo.getValueAt(modelIndex, 2); // Preço de Custo
-                    double precoVenda = (double) modelo.getValueAt(modelIndex, 3); // Preço de Venda
-                    int quantidade = (int) modelo.getValueAt(modelIndex, 4); // Quantidade
-                    String tipo = (String) modelo.getValueAt(modelIndex, 5); // Tipo
-
-                    // Preenche os campos do formulário
-                    txtNome.setText(nome);
-                    txtPrecoCusto.setText(String.format("%.2f", precoCusto));
-                    txtPrecoVenda.setText(String.format("%.2f", precoVenda));
-                    txtQuantidade.setText(String.valueOf(quantidade));
-                    comboBoxTipo.setSelectedItem(tipo);
-                }
-            }
-        });
-
         JScrollPane scrollPane = new JScrollPane(tabela);
         scrollPane.setBorder(BorderFactory.createTitledBorder("Lista de Produtos"));
 
-
-        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, painelEsquerdo, scrollPane);
-        splitPane.setDividerLocation(300);
-        splitPane.setResizeWeight(0.3);
+        // Usando JSplitPane para dividir a tela em duas partes
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, painelPesquisa, scrollPane);
+        splitPane.setDividerLocation(300); // Define a posição inicial do divisor
+        splitPane.setResizeWeight(0.3); // Define a proporção de redimensionamento
         splitPane.setEnabled(false);
 
+        // Layout principal
         add(painelCabecalho, BorderLayout.NORTH);
         add(splitPane, BorderLayout.CENTER);
+
+        // Aplica o renderizador personalizado à coluna "Editada"
+        tabela.getColumnModel().getColumn(4).setCellRenderer(new IconCellRenderer(iconeCheckmark, iconePencil));
+
+        // Configura a pesquisa síncrona
+        configurarPesquisaSincrona();
+    }
+
+    public class IconCellRenderer extends DefaultTableCellRenderer {
+        private ImageIcon iconeCheckmark;
+        private ImageIcon iconePencil;
+
+        public IconCellRenderer(ImageIcon iconeCheckmark, ImageIcon iconePencil) {
+            this.iconeCheckmark = iconeCheckmark;
+            this.iconePencil = iconePencil;
+            setHorizontalAlignment(JLabel.CENTER); // Centraliza o ícone
+        }
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+            // Verifica se o modelo da tabela é ModeloTabelaMovimentacoes
+            if (table.getModel() instanceof ModeloTabelaMovimentacoes) {
+                // Verifica se a coluna é a coluna "Status"
+                if (column == 4) {
+                    int editada = (int) value; // O valor da célula é 0 ou 1
+                    if (editada == 0) {
+                        setIcon(iconeCheckmark); // Ícone de checkmark para normal
+                        setToolTipText("Entrada/Saída Padrão"); // Legenda para o ícone de checkmark
+                    } else {
+                        setIcon(iconePencil); // Ícone de lápis para editado
+                        setToolTipText("Saída Editada no Cadastro"); // Legenda para o ícone de lápis
+                    }
+                    setText(""); // Remove o texto
+                }
+            } else {
+                // Para outras tabelas, não renderiza ícones
+                setIcon(null);
+                setText(value != null ? value.toString() : ""); // Restaura o texto original
+            }
+
+            return this;
+        }
+    }
+
+
+
+    public String getTipoPesquisa() {
+        return comboBoxTipoPesquisa.getSelectedItem().toString();
+    }
+
+    private void ocultarProduto(int id) {
+        // Verificar se o produto tem estoque maior que 0
+        Produto produto = model.obterProdutoPorId(id); // Método para obter o produto pelo ID
+        if (produto != null && produto.getQuantidade() > 0) {
+            // Exibir aviso informativo se o estoque for maior que 0
+            JOptionPane.showMessageDialog(this,
+                    "Atenção: Este produto ainda tem estoque disponível!",
+                    "Aviso",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+
+        // Confirmar a ocultação do produto
+        UIManager.put("OptionPane.yesButtonText", "Sim");
+        UIManager.put("OptionPane.noButtonText", "Não");
+        int confirm = JOptionPane.showConfirmDialog(this,
+                "Tem certeza que deseja ocultar este produto?",
+                "Confirmar Ocultação",
+                JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            boolean sucesso = model.ocultarProduto(id);
+            if (sucesso) {
+                JOptionPane.showMessageDialog(this,
+                        "Produto ocultado com sucesso.",
+                        "Sucesso",
+                        JOptionPane.INFORMATION_MESSAGE);
+                carregarProdutos(model.carregarProdutos()); // Recarrega a lista de produtos
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao ocultar o produto.",
+                        "Erro",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void tornarProdutoVisivel(int id) {
+        int confirm = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja tornar este produto visível?", "Confirmar Visibilidade", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            boolean sucesso = model.tornarProdutoVisivel(id);
+            if (sucesso) {
+                JOptionPane.showMessageDialog(this, "Produto tornado visível com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                alternarTabela(comboBoxExibicao.getSelectedIndex()); // Recarrega a tabela atual
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao tornar o produto visível.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void alternarTabela(int indice) {
+        if (indice == 0) {
+            // Exibir produtos visíveis
+            tabela.setModel(modelo); // Restaura o modelo original da tabela
+            carregarProdutos(model.carregarProdutosVisiveis());
+            btnOcultar.setVisible(true);
+            btnTornarVisivel.setVisible(false);
+            btnReporEstoque.setVisible(true);
+
+            // Remove o renderizador de ícones (não é necessário para produtos)
+            tabela.getColumnModel().getColumn(4).setCellRenderer(null);
+        } else if (indice == 1) {
+            // Exibir produtos ocultos
+            tabela.setModel(modelo); // Restaura o modelo original da tabela
+            carregarProdutos(model.carregarProdutosOcultos());
+            btnOcultar.setVisible(false);
+            btnTornarVisivel.setVisible(true);
+            btnReporEstoque.setVisible(false);
+
+            // Remove o renderizador de ícones (não é necessário para produtos)
+            tabela.getColumnModel().getColumn(4).setCellRenderer(null);
+        } else if (indice == 2) {
+            // Exibir movimentações de estoque
+            ModeloTabelaMovimentacoes modeloTabelaMovimentacoes = new ModeloTabelaMovimentacoes();
+            tabela.setModel(modeloTabelaMovimentacoes); // Define o novo modelo de tabela
+            carregarMovimentacoesEstoque(model.carregarMovimentacoesEstoque());
+            btnOcultar.setVisible(false);
+            btnTornarVisivel.setVisible(false);
+            btnReporEstoque.setVisible(false);
+
+            // Aplica o renderizador de ícones à coluna "Editada"
+            tabela.getColumnModel().getColumn(4).setCellRenderer(new IconCellRenderer(iconeCheckmark, iconePencil));
+        }
+
+        // Redefine o TableRowSorter após a troca de modelos
+        TableRowSorter<?> sorter = new TableRowSorter<>(tabela.getModel());
+        tabela.setRowSorter(sorter);
+    }
+    private void carregarMovimentacoesEstoque(List<MovimentacaoEstoque> movimentacoes) {
+        SwingUtilities.invokeLater(() -> {
+            if (tabela.getModel() instanceof ModeloTabelaMovimentacoes) {
+                ModeloTabelaMovimentacoes modeloTabelaMovimentacoes = (ModeloTabelaMovimentacoes) tabela.getModel();
+                modeloTabelaMovimentacoes.setRowCount(0); // Limpa o modelo antes de adicionar novas linhas
+
+                for (MovimentacaoEstoque movimentacao : movimentacoes) {
+                    modeloTabelaMovimentacoes.addRow(new Object[]{
+                            movimentacao.getId(),
+                            movimentacao.getNomeProduto(),
+                            movimentacao.getTipo(),
+                            movimentacao.getQuantidade(),
+                            movimentacao.isEditado() ? 1 : 0, // Exibe 1 para editado, 0 para não editado
+                            movimentacao.getData()
+                    });
+                }
+
+                // Redefine o TableRowSorter após carregar os dados
+                TableRowSorter<ModeloTabelaMovimentacoes> sorter = new TableRowSorter<>(modeloTabelaMovimentacoes);
+                tabela.setRowSorter(sorter);
+
+               //sorter.setSortKeys(List.of(new RowSorter.SortKey(0, SortOrder.DESCENDING)));
+            }
+        });
+    }
+
+    private void configurarPesquisaSincrona() {
+        timerPesquisa = new Timer(300, e -> {
+            String termo = txtPesquisa.getText().trim();
+            String tipoPesquisa = comboBoxTipoPesquisa.getSelectedItem().toString();
+            int tabelaAtiva = comboBoxExibicao.getSelectedIndex();
+
+            if (termo.isEmpty()) {
+                // Se o campo estiver vazio, carrega todos os produtos ou movimentações, conforme a seleção
+                if (tabelaAtiva == 0) {
+                    carregarProdutos(model.carregarProdutosVisiveis());
+                } else if (tabelaAtiva == 1) {
+                    carregarProdutos(model.carregarProdutosOcultos());
+                } else if (tabelaAtiva == 2) {
+                    carregarMovimentacoesEstoque(model.carregarMovimentacoesEstoque());
+                }
+            } else {
+                // Realiza a pesquisa com o termo digitado e o tipo de pesquisa
+                if (tabelaAtiva == 2) {
+                    List<MovimentacaoEstoque> movimentacoes = model.pesquisarMovimentacoes(termo, tipoPesquisa);
+                    carregarMovimentacoesEstoque(movimentacoes);
+                } else {
+                    boolean apenasVisiveis = tabelaAtiva == 0;
+                    List<Produto> produtos = model.pesquisarProdutos(termo, tipoPesquisa, apenasVisiveis, tabelaAtiva);
+                    carregarProdutos(produtos);
+                }
+            }
+        });
+        timerPesquisa.setRepeats(false); // Garante que o timer só execute uma vez após o delay
+
+        // Adiciona um DocumentListener ao campo de pesquisa
+        txtPesquisa.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                timerPesquisa.restart(); // Reinicia o timer ao digitar
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                timerPesquisa.restart(); // Reinicia o timer ao apagar
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                // Não é necessário para JTextField
+            }
+        });
+    }
+    public boolean isApenasVisiveis() {
+        return comboBoxExibicao.getSelectedIndex() == 0; // 0 = Produtos Visíveis, 1 = Produtos Ocultos
+    }
+
+    public int getTabelaAtiva() {
+        return comboBoxExibicao.getSelectedIndex(); // Retorna o índice da tabela ativa
+    }
+
+    private void reporEstoque(int produtoId) {
+        String quantidadeStr = JOptionPane.showInputDialog(this, "Informe a quantidade a ser adicionada:", "Repor Estoque", JOptionPane.QUESTION_MESSAGE);
+        if (quantidadeStr != null && !quantidadeStr.isEmpty()) {
+            try {
+                int quantidade = Integer.parseInt(quantidadeStr);
+                if (quantidade > 0) {
+                    int estoqueId = model.obterIdEstoquePorProduto(produtoId);
+                    if (estoqueId != -1) {
+                        boolean sucesso = model.registrarMovimentacao(estoqueId, "ENTRADA", quantidade);
+                        if (sucesso) {
+                            JOptionPane.showMessageDialog(this, "Estoque reposto com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                            carregarProdutos(model.carregarProdutos()); // Recarrega a lista de produtos
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Erro ao repor o estoque.", "Erro", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Estoque não encontrado para o produto.", "Erro", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "A quantidade deve ser maior que 0.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Quantidade inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
     private void styleButton(JButton button) {
@@ -177,19 +495,26 @@ public class EstoqueView extends JFrame {
         button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         button.setPreferredSize(new Dimension(150, 40));
 
-        button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
                 button.setBackground(Color.WHITE);
                 button.setForeground(new Color(59, 89, 182));
             }
 
-            @Override
-            public void mouseExited(MouseEvent e) {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
                 button.setBackground(new Color(59, 89, 182));
                 button.setForeground(Color.WHITE);
             }
         });
+    }
+
+    private void styleComboBox(JComboBox<String> comboBox) {
+        comboBox.setBackground(new Color(59, 89, 182));
+        comboBox.setForeground(Color.WHITE);
+        comboBox.setFont(new Font("Arial", Font.BOLD, 14));
+        comboBox.setFocusable(false);
+        comboBox.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
+
     }
 
     private ImageIcon redimensionarImagem(String caminho, int largura, int altura) {
@@ -198,163 +523,28 @@ public class EstoqueView extends JFrame {
         return new ImageIcon(imagem);
     }
 
-    // Getters e métodos para interação com o Controller
-    public void setAdicionarListener(ActionListener listener) {
-        btnAdicionar.addActionListener(listener);
-    }
-
-    public void setAtualizarListener(ActionListener listener) {
-        btnAtualizar.addActionListener(listener);
-    }
-
-    public void setRemoverListener(ActionListener listener) {
-        btnRemover.addActionListener(listener);
-    }
-
-    public void setLimparListener(ActionListener listener) {
-        btnLimpar.addActionListener(listener);
-    }
-
-    public Produto getProdutoFormulario() {
-        resetarCoresCampos();
-
-        String nome = txtNome.getText().trim();
-        String precoCustoText = txtPrecoCusto.getText().trim();
-        String precoVendaText = txtPrecoVenda.getText().trim();
-        String quantidadeText = txtQuantidade.getText().trim();
-        String tipo = comboBoxTipo.getSelectedItem().toString().trim();
-
-        boolean erro = false;
-
-        if (nome.isEmpty()) {
-            txtNome.setBackground(new Color(255, 200, 200));
-            if (!erro) {
-                txtNome.requestFocus();
-                erro = true;
-            }
-        }
-
-        Double precoCusto = validarEConverterPreco(precoCustoText, txtPrecoCusto);
-        if (precoCusto == null || precoCusto < 0) {
-            if (!erro) {
-                erro = true;
-            }
-        }
-
-        Double precoVenda = validarEConverterPreco(precoVendaText, txtPrecoVenda);
-        if (precoVenda == null || precoVenda < 0) {
-            if (!erro) {
-                erro = true;
-            }
-        }
-
-        int quantidade = 0;
-        try {
-            quantidade = Integer.parseInt(quantidadeText);
-            if (quantidade < 0) {
-                throw new NumberFormatException();
-            }
-        } catch (NumberFormatException e) {
-            txtQuantidade.setBackground(new Color(255, 200, 200));
-            if (!erro) {
-                txtQuantidade.requestFocus();
-                erro = true;
-            }
-        }
-
-        if (erro) {
-            JOptionPane.showMessageDialog(this, "Por favor, insira valores válidos:\n" +
-                    "- Nome: Não pode estar vazio.\n" +
-                    "- Preço de Custo e Venda: Devem ser números válidos (ex: 10,50 ou R$ 10,50).\n" +
-                    "- Quantidade: Deve ser um número inteiro positivo.", "Erro de Entrada", JOptionPane.ERROR_MESSAGE);
-            return null;
-        }
-
-        return new Produto(0, nome, precoCusto, precoVenda, quantidade, tipo);
-    }
-
-    private Double validarEConverterPreco(String texto, JTextField campo) {
-        texto = texto.replace("R$", "").trim();
-        texto = texto.replace(",", ".");
-
-        try {
-            if (temMaisDeDuasCasasDecimais(texto)) {
-                campo.setBackground(new Color(255, 200, 200));
-                campo.requestFocus();
-                return null;
-            }
-            return Double.parseDouble(texto);
-        } catch (NumberFormatException e) {
-            campo.setBackground(new Color(255, 200, 200));
-            campo.requestFocus();
-            return null;
-        }
-    }
-
-    private boolean temMaisDeDuasCasasDecimais(String valor) {
-        int indexPonto = valor.indexOf(".");
-        if (indexPonto != -1) {
-            int casasDecimais = valor.length() - indexPonto - 1;
-            return casasDecimais > 2;
-        }
-        return false;
-    }
-
-    private void resetarCoresCampos() {
-        txtNome.setBackground(Color.WHITE);
-        txtPrecoCusto.setBackground(Color.WHITE);
-        txtPrecoVenda.setBackground(Color.WHITE);
-        txtQuantidade.setBackground(Color.WHITE);
-    }
-
-    public void limparFormulario() {
-        txtNome.setText("");
-        txtPrecoCusto.setText("");
-        txtPrecoVenda.setText("");
-        txtQuantidade.setText("");
-        comboBoxTipo.setSelectedIndex(0);
-    }
-
-    public void adicionarProdutoTabela(Produto produto) {
-        modelo.addRow(new Object[]{produto.getId(), produto.getNome(), produto.getPrecoCusto(), produto.getPrecoVenda(), produto.getQuantidade(), produto.getTipo()});
-    }
-
-    public void atualizarProdutoTabela(Produto produto) {
-        int linhaSelecionada = tabela.getSelectedRow();
-        if (linhaSelecionada != -1) {
-            // Converte o índice da visão para o índice do modelo
-            int modelIndex = tabela.convertRowIndexToModel(linhaSelecionada);
-            modelo.setValueAt(produto.getNome(), modelIndex, 1);
-            modelo.setValueAt(produto.getPrecoCusto(), modelIndex, 2);
-            modelo.setValueAt(produto.getPrecoVenda(), modelIndex, 3);
-            modelo.setValueAt(produto.getQuantidade(), modelIndex, 4);
-            modelo.setValueAt(produto.getTipo(), modelIndex, 5);
-        }
-    }
-
-    public void removerProdutoTabela() {
-        int linhaSelecionada = tabela.getSelectedRow();
-        if (linhaSelecionada != -1) {
-            // Converte o índice da visão para o índice do modelo
-            int modelIndex = tabela.convertRowIndexToModel(linhaSelecionada);
-            modelo.removeRow(modelIndex);
-        }
-    }
-
-    public int getProdutoSelecionadoId() {
-        int linhaSelecionada = tabela.getSelectedRow();
-        if (linhaSelecionada != -1) {
-            // Converte o índice da visão para o índice do modelo
-            int modelIndex = tabela.convertRowIndexToModel(linhaSelecionada);
-            return (int) modelo.getValueAt(modelIndex, 0); // Retorna o ID do modelo
-        }
-        return -1;
+    public String getTermoPesquisa() {
+        return txtPesquisa.getText().trim();
     }
 
     public void carregarProdutos(List<Produto> produtos) {
-        for (Produto produto : produtos) {
-            modelo.addRow(new Object[]{produto.getId(), produto.getNome(), produto.getPrecoCusto(), produto.getPrecoVenda(), produto.getQuantidade(), produto.getTipo()});
-        }
+        SwingUtilities.invokeLater(() -> {
+            modelo.setRowCount(0); // Limpa a tabela antes de carregar novos dados
+            for (Produto produto : produtos) {
+                modelo.addRow(new Object[]{
+                        produto.getId(),
+                        produto.getNome(),
+                        produto.getPrecoCusto(),
+                        produto.getPrecoVenda(),
+                        produto.getQuantidade(),
+                        produto.getTipo()
+                });
+            }
+
+            // Redefine o TableRowSorter após carregar os dados
+            TableRowSorter<ModeloTabela> sorter = new TableRowSorter<>(modelo);
+            tabela.setRowSorter(sorter);
+        });
     }
 
     // Classe interna ModeloTabela
@@ -374,6 +564,47 @@ public class EstoqueView extends JFrame {
                 case 5: return String.class;   // Tipo
                 default: return Object.class;
             }
+        }
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            // Colunas não editaveis
+            return false;
+        }
+    }
+
+    // Classe interna ModeloTabelaMovimentacoes
+    class ModeloTabelaMovimentacoes extends DefaultTableModel {
+        public ModeloTabelaMovimentacoes() {
+            super(new String[]{"ID", "Produto", "Tipo", "Quantidade", "Status", "Data"}, 0);
+        }
+
+        @Override
+        public Class<?> getColumnClass(int columnIndex) {
+            switch (columnIndex) {
+                case 0: return Integer.class;  // ID
+                case 1: return String.class;   // Produto
+                case 2: return String.class;   // Tipo
+                case 3: return Integer.class;  // Quantidade
+                case 4: return Integer.class;  // Editado (1 ou 0)
+                case 5: return String.class;  // Data
+                default: return Object.class;
+            }
+        }
+
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            // Colunas não editáveis
+            return false;
+        }
+    }
+    public static class Main {
+        public static void main(String[] args) {
+            SwingUtilities.invokeLater(() -> {
+                EstoqueModel model = new EstoqueModel();
+                EstoqueView view = new EstoqueView(model);
+                new EstoqueController(model, view);
+                view.setVisible(true);
+            });
         }
     }
 }

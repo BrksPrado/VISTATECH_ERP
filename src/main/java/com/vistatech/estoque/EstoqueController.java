@@ -12,13 +12,8 @@ public class EstoqueController {
         this.model = model;
         this.view = view;
 
-        // Configura os listeners dos botões
-        this.view.setAdicionarListener(new AdicionarListener());
-        this.view.setAtualizarListener(new AtualizarListener());
-        this.view.setRemoverListener(new RemoverListener());
-        this.view.setLimparListener(new LimparListener());
 
-        // Carrega os produtos do banco de dados ao iniciar
+        // Carrega todos os produtos ao iniciar
         carregarProdutos();
     }
 
@@ -27,50 +22,19 @@ public class EstoqueController {
         view.carregarProdutos(produtos);
     }
 
-    class AdicionarListener implements ActionListener {
+    class PesquisarListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Produto produto = view.getProdutoFormulario();
-            if (produto != null) {
-                model.adicionarProduto(produto);
-                view.adicionarProdutoTabela(produto);
-                view.limparFormulario();
-            }
-        }
-    }
+            String termo = view.getTermoPesquisa(); // Obtém o termo de pesquisa
+            String tipoPesquisa = view.getTipoPesquisa(); // Obtém o tipo de pesquisa selecionado
+            boolean apenasVisiveis = view.isApenasVisiveis(); // Obtém o estado de visibilidade
+            int tabelaAtiva = view.getTabelaAtiva(); // Obtém o índice da tabela ativa
 
-    class AtualizarListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            int id = view.getProdutoSelecionadoId();
-            if (id != -1) {
-                Produto produto = view.getProdutoFormulario();
-                if (produto != null) {
-                    produto.setId(id);
-                    model.atualizarProduto(produto);
-                    view.atualizarProdutoTabela(produto);
-                    view.limparFormulario();
-                }
-            }
-        }
-    }
+            // Realiza a pesquisa com o termo, o tipo de pesquisa, a visibilidade e a tabela ativa
+            List<Produto> produtos = model.pesquisarProdutos(termo, tipoPesquisa, apenasVisiveis, tabelaAtiva);
 
-    class RemoverListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            int id = view.getProdutoSelecionadoId();
-            if (id != -1) {
-                model.removerProduto(id);
-                view.removerProdutoTabela();
-                view.limparFormulario();
-            }
-        }
-    }
-
-    class LimparListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            view.limparFormulario();
+            // Carrega os produtos na view
+            view.carregarProdutos(produtos);
         }
     }
 }

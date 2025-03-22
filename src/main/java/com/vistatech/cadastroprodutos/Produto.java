@@ -1,4 +1,4 @@
-package com.vistatech.estoque;
+package com.vistatech.cadastroprodutos;
 
 public class Produto {
     private int id;
@@ -7,16 +7,14 @@ public class Produto {
     private double precoVenda;
     private int quantidade;
     private String tipo;
-    private boolean oculto;
 
-    public Produto(int id, String nome, double precoCusto, double precoVenda, int quantidade, String tipo, boolean oculto) {
+    public Produto(int id, String nome, double precoCusto, double precoVenda, int quantidade, String tipo) {
         this.id = id;
         this.nome = nome;
         this.precoCusto = precoCusto;
         this.precoVenda = precoVenda;
         this.quantidade = quantidade;
         this.tipo = tipo;
-        this.oculto = oculto;
     }
 
     // Getters e Setters
@@ -66,13 +64,5 @@ public class Produto {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public boolean isOculto() {
-        return oculto;
-    }
-
-    public void setOculto(boolean oculto) {
-        this.oculto = oculto;
     }
 }
