@@ -13,6 +13,7 @@ public class LoginScreenMain extends JFrame {
 
     public LoginScreenMain() {
 
+        initLookAndFeel();
         setTitle("V1.0.1");
         setSize(400, 350);
 
@@ -157,9 +158,15 @@ public class LoginScreenMain extends JFrame {
     }
     private void initLookAndFeel() {
         try {
-            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+            // Look and Feel padrão do Java (Metal)
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+
+            // Se quiser usar o estilo nativo do sistema operacional, use esta linha em vez da de cima:
+            // UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }

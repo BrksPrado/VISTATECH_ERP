@@ -35,7 +35,7 @@ public class EstoqueView extends JFrame {
     public EstoqueView(EstoqueModel model) {
         this.model = model;
         setTitle("Consulta de Estoque");
-        setSize(800, 500);
+        setSize(1300, 800);
         setLocationRelativeTo(null);
 
         iconeCheckmark = carregarIcone("/icons/check.png");
@@ -600,14 +600,14 @@ public class EstoqueView extends JFrame {
             return false;
         }
     }
-    public static class Main {
-        public static void main(String[] args) {
-            SwingUtilities.invokeLater(() -> {
-                EstoqueModel model = new EstoqueModel();
-                EstoqueView view = new EstoqueView(model);
-                new EstoqueController(model, view);
-                view.setVisible(true);
-            });
-        }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            EstoqueModel model = new EstoqueModel();
+            EstoqueView view = new EstoqueView(model);
+            new EstoqueController(model, view);
+            view.setVisible(true);
+        });
     }
+
 }

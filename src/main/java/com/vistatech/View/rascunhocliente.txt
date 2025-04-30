@@ -1,0 +1,112 @@
+  // LINHA DOIS DO FORMULARIO
+        gbc.gridx=0;gbc.gridy=1;
+        JPanel lineTwo = new JPanel(new GridBagLayout());
+        lineTwo.setPreferredSize(new Dimension(550, 30));
+        lineTwo.setBackground(new Color(230, 230, 230));
+        formulario.add(lineTwo,gbc);
+
+
+
+        // LINHA TRES DO FORMULARIO
+        gbc.gridx=0;gbc.gridy=3;
+        JPanel lineThree = new JPanel(new GridBagLayout());
+        lineThree.setPreferredSize(new Dimension(550, 30));
+        lineThree.setBackground(new Color(230, 230, 230));
+        formulario.add(lineThree,gbc);
+
+
+            gbc.gridy=0;
+            //ENDERECO
+            gbc.weightx = 0; // Faz o campo expandir
+            lineThree.add(new JLabel("RUA:"),gbc);
+            gbc.weightx = 0.9; // Faz o campo expandir
+            JTextField strRua = new JTextField(17);
+            gbc.gridx=1;
+            lineThree.add(strRua,gbc);
+
+            //NUMERO
+            gbc.weightx = 0;
+            gbc.gridx=2;
+            lineThree.add(new JLabel("Nº:"),gbc);
+            gbc.weightx = 0.15;
+            JTextField strNumero = new JTextField(20);
+            gbc.gridx=3;
+            lineThree.add(strNumero,gbc);
+
+            //BAIRRO
+            gbc.weightx = 0;
+            gbc.gridx=4;
+            lineThree.add(new JLabel("BAIRRO:"),gbc);
+            gbc.weightx = 1;
+            JTextField strBairro = new JTextField(20);
+            gbc.gridx=5;
+            lineThree.add(strBairro,gbc);
+
+
+        // LINHA QUATRO DO FORMULARIO
+        gbc.gridx=0;gbc.gridy=4;
+        JPanel lineFour = new JPanel(new GridBagLayout());
+        lineFour.setPreferredSize(new Dimension(550, 30));
+        lineFour.setBackground(new Color(230, 230, 230));
+        formulario.add(lineFour,gbc);
+            //CIDADE
+            gbc.weightx = 0; // Faz o campo expandir
+            lineFour.add(new JLabel("CIDADE:"),gbc);
+            gbc.weightx = 1; // Faz o campo expandir
+            JTextField strCidade = new JTextField(20);
+            gbc.gridx=1;
+            lineFour.add(strCidade,gbc);
+
+            //ESTADO
+            gbc.weightx = 0;
+            gbc.gridx=2;
+            lineFour.add(new JLabel("ESTADO:"),gbc);
+            gbc.weightx = 0.5;
+            JTextField strEstado = new JTextField(20);
+            gbc.gridx=3;
+            lineFour.add(strEstado,gbc);
+
+            //CEP
+            gbc.weightx = 0;
+            gbc.gridx=4;
+            lineFour.add(new JLabel("CEP:"),gbc);
+            gbc.weightx = 0.5;
+            JFormattedTextField strCep;
+            try{
+                strCep = new JFormattedTextField(new MaskFormatter("#####-###"));
+                strCep.setColumns(6);
+            }catch (Exception e){
+                strCep = new JFormattedTextField();
+            }
+            gbc.gridx=5;
+            lineFour.add(strCep,gbc);
+
+            // LINHA CINCO DO FORMULARIO
+                    gbc.gridx=0;gbc.gridy=5;
+                    JPanel lineFive = new JPanel(new GridBagLayout());
+                    lineFive.setPreferredSize(new Dimension(550, 30));
+                    lineFive.setBackground(new Color(230, 230, 230));
+                    formulario.add(lineFive,gbc);
+                        //CELULAR
+                        gbc.weightx = 0; // Faz o campo expandir
+                        lineFive.add(new JLabel("CELULAR:"),gbc);
+                        gbc.weightx = 0.4; // Faz o campo expandir
+                        JFormattedTextField strCelular;
+                        try{
+                            strCelular = new JFormattedTextField(new MaskFormatter("(##) #####-####"));
+                            strCelular.setColumns(11);
+                        }catch (Exception e){
+                            strCelular = new JFormattedTextField();
+                        }
+                        gbc.gridx=1;
+                        lineFive.add(strCelular,gbc);
+
+                        //EMAIL
+                        gbc.weightx = 0;
+                        gbc.gridx=2;
+                        lineFive.add(new JLabel("EMAIL:"),gbc);
+                        gbc.weightx = 1;
+                        JTextField strEmail = new JTextField(20);
+                        gbc.gridx=3;
+                        lineFive.add(strEmail,gbc);
+

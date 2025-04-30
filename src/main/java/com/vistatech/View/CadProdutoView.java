@@ -29,10 +29,9 @@ public class CadProdutoView extends JFrame {
         this.model = model;
 
         setTitle("Módulo de Estoque");
-        setSize(800, 500);
+        setSize(1500,768);
         setLocationRelativeTo(null);
-
-        setLayout(new BorderLayout(10, 10));
+//        setLayout(new BorderLayout(10, 10));
         initLookAndFeel();
         initComponents();
     }
@@ -456,15 +455,13 @@ public class CadProdutoView extends JFrame {
             return column != 0 && column != 4; // A coluna 0 (ID) e 4 (Quantidade) não é editável
         }
     }
-
-    public static class Main {
-        public static void main(String[] args) {
-            SwingUtilities.invokeLater(() -> {
-                CadProdutoModel model = new CadProdutoModel();
-                CadProdutoView view = new CadProdutoView(model);
-                new CadProdutoController(model, view);
-                view.setVisible(true);
-            });
-        }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            CadProdutoModel model = new CadProdutoModel();
+            CadProdutoView view = new CadProdutoView(model);
+            new CadProdutoController(model, view);
+            view.setVisible(true);
+        });
     }
+
 }
