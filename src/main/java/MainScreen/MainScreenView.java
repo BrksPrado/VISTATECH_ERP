@@ -8,11 +8,15 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
 import CadUsuario.UserView;
 import CadCliente.ClientView;
+import com.vistatech.Controller.EstoqueController;
+import com.vistatech.Controller.FinanceiroController;
 import com.vistatech.Model.CadProdutoModel;
+import com.vistatech.Model.FinanceiroModel;
 import com.vistatech.View.CadProdutoView;
 import com.vistatech.View.EstoqueView;
 import com.vistatech.Model.EstoqueModel;
 import com.vistatech.Controller.CadProdutoController;
+import com.vistatech.View.FinanceiroView;
 
 public class MainScreenView extends JFrame {
 
@@ -81,7 +85,7 @@ public class MainScreenView extends JFrame {
         }
 
         // Botões do menu principal e funcionalidades
-        String[] modules = {"Cadastro", "Pré Venda", "Estoque Produtos", "Financeiro", "Notas Eletrônicas", "Relatórios", "Configurações"};
+        String[] modules = {"Cadastro", "Pré Venda", "Estoque", "Financeiro", "Notas Eletrônicas", "Relatórios", "Configurações"};
         for (String module : modules) {
             JButton button = createHoverButton(module);
 
@@ -105,11 +109,21 @@ public class MainScreenView extends JFrame {
             }
 
             // Adiciona funcionalidade ao botão "Estoque Produtos"
-            if (module.equals("Estoque Produtos")) {
+            if (module.equals("Estoque")) {
                 button.addActionListener(e -> {
                     EstoqueModel estoqueModel = new EstoqueModel(); // Instancia o modelo
                     EstoqueView estoqueView = new EstoqueView(estoqueModel); // Passa o modelo ao construtor
+                    EstoqueController estoqueController = new EstoqueController(estoqueModel, estoqueView); // Inicializa o controlador
                     estoqueView.setVisible(true);
+                });
+            }
+
+            if (module.equals("Financeiro")) {
+                button.addActionListener(e -> {
+                    FinanceiroView financeiroView = new FinanceiroView();
+                    new FinanceiroModel(); 
+                    new FinanceiroController(financeiroView);
+                    financeiroView.setVisible(true);
                 });
             }
 
