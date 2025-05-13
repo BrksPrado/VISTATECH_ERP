@@ -1,12 +1,11 @@
 // src/main/java/entrada/view/EntradaView.java
-package com.vistatech.view;
+package com.vistatech.View;
 
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-// srpackage com.vistatech.view;c/main/java/com/vistatech/view/financeiroView.java
 
 import javax.swing.*;
 import javax.swing.table.*;

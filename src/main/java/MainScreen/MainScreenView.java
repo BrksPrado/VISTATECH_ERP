@@ -8,6 +8,11 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
 import CadUsuario.UserView;
 import CadCliente.ClientView;
+import com.vistatech.Model.CadProdutoModel;
+import com.vistatech.View.CadProdutoView;
+import com.vistatech.View.EstoqueView;
+import com.vistatech.Model.EstoqueModel;
+import com.vistatech.Controller.CadProdutoController;
 
 public class MainScreenView extends JFrame {
 
@@ -91,6 +96,21 @@ public class MainScreenView extends JFrame {
                     }
                 });
                 menuCliente.addActionListener(e -> {ClientView clientView = new ClientView(); clientView.setVisible(true);});
+                menuProduto.addActionListener(e -> {
+                    CadProdutoModel model = new CadProdutoModel();
+                    CadProdutoView produtoView = new CadProdutoView(model);
+                    new CadProdutoController(model, produtoView); // Inicializa o controlador
+                    produtoView.setVisible(true);
+                });
+            }
+
+            // Adiciona funcionalidade ao botão "Estoque Produtos"
+            if (module.equals("Estoque Produtos")) {
+                button.addActionListener(e -> {
+                    EstoqueModel estoqueModel = new EstoqueModel(); // Instancia o modelo
+                    EstoqueView estoqueView = new EstoqueView(estoqueModel); // Passa o modelo ao construtor
+                    estoqueView.setVisible(true);
+                });
             }
 
             hotbar.add(button);
@@ -186,3 +206,4 @@ public class MainScreenView extends JFrame {
         return (getExtendedState() & JFrame.ICONIFIED) == JFrame.ICONIFIED;
     }
 }
+

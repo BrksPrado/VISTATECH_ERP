@@ -5,11 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-<<<<<<< HEAD
+
     <artifactId>VTERP-Estoque</artifactId>
-=======
-    <artifactId>teste</artifactId>
->>>>>>> b7d418ce9ef70f2355972f7172c6030ef9864c21
+
+
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -18,7 +17,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-<<<<<<< HEAD
 <dependencies>
     <dependency>
         <groupId>mysql</groupId>
@@ -35,17 +33,4 @@
 
 </dependencies>
 
-
-
-
-=======
-
-    <dependencies>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
-        </dependency>
-    </dependencies>
->>>>>>> b7d418ce9ef70f2355972f7172c6030ef9864c21
 </project>

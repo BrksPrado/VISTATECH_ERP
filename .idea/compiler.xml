@@ -6,11 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-<<<<<<< HEAD
         <module name="VTERP-Estoque" />
-=======
-        <module name="teste" />
->>>>>>> b7d418ce9ef70f2355972f7172c6030ef9864c21
       </profile>
     </annotationProcessing>
   </component>

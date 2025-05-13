@@ -7,14 +7,11 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
 
-import com.vistatech.Controller.EstoqueController;
-import com.vistatech.Model.CadProdutoModel;
-import com.vistatech.Model.EstoqueModel;
-import com.vistatech.View.ClientView;
-import com.vistatech.View.EstoqueView;
-import com.vistatech.View.UserView;
-import com.vistatech.Controller.CadProdutoController;
-import com.vistatech.View.CadProdutoView;
+
+import com.vistatech.View.*;
+import com.vistatech.Controller.*;
+import com.vistatech.Model.*;
+
 
 public class MainScreenView extends JFrame {
 
@@ -83,7 +80,7 @@ public class MainScreenView extends JFrame {
         }
 
         // Botões do menu principal e funcionalidades
-        String[] modules = {"Cadastro", "Pré Venda", "Estoque Produtos", "Financeiro", "Notas Eletrônicas", "Relatórios", "Configurações","Sair"};
+        String[] modules = {"Cadastro", "Pré Venda", "Estoque", "Financeiro", "Notas Eletrônicas", "Relatórios", "Configurações","Sair"};
         for (String module : modules) {
             JButton button = createHoverButton(module);
 
@@ -103,10 +100,37 @@ public class MainScreenView extends JFrame {
                 menuProduto.addActionListener(e -> {
                     CadProdutoModel model = new CadProdutoModel();
                     CadProdutoView view = new CadProdutoView(model);
-                    new CadProdutoController(model, view);
+                    CadProdutoController controller = new CadProdutoController(model, view);
                     view.setVisible(true);
                 });
             }
+
+            //BOTÃO PRÉ VENDA
+
+            if (module.equals("Estoque")) {
+                button.addActionListener(e -> {
+                    EstoqueModel model = new EstoqueModel();
+                    EstoqueView view = new EstoqueView(model);
+                    EstoqueController controller = new EstoqueController(model, view);
+                    view.setVisible(true);
+                });
+            }
+
+            if (module.equals("Financeiro")) {
+                button.addActionListener(e -> {
+                    FinanceiroView financeiroView = new FinanceiroView();
+                    FinanceiroController financeiroController = new FinanceiroController(financeiroView);
+                    financeiroView.setVisible(true);
+                });
+            }
+
+
+            //NE
+
+            //RELATORIOS
+
+            //CONFIGURAÇÕES
+
             if(module.equals("Sair")){
                 button.addActionListener(e -> {
                     int respostaSair = JOptionPane.showConfirmDialog(
@@ -119,14 +143,6 @@ public class MainScreenView extends JFrame {
                         new LoginScreenMain();
                         dispose();
                     }
-                });
-            }
-            if (module.equals("Estoque Produtos")) {
-                button.addActionListener(e -> {
-                    EstoqueModel model = new EstoqueModel();
-                    EstoqueView view = new EstoqueView(model);
-                    new EstoqueController(model, view);
-                    view.setVisible(true);
                 });
             }
 

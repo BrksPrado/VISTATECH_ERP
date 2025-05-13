@@ -35,6 +35,7 @@ public class CadProdutoView extends JFrame {
         setLayout(new BorderLayout(10, 10));
         initLookAndFeel();
         initComponents();
+
     }
 
     private void initLookAndFeel() {
@@ -431,6 +432,14 @@ public class CadProdutoView extends JFrame {
             comboBoxTipo.setSelectedItem(tipo);
         }
     }
+
+    /*public void carregarDados() {
+        List<ProdutoEstoque> produtos = model.carregarProdutos();
+        modelo.setRowCount(0); // Limpa a tabela
+        for (ProdutoEstoque produto : produtos) {
+            modelo.addRow(new Object[]{...});
+        }
+    }*/
 
     // Classe interna ModeloTabela
     class ModeloTabela extends DefaultTableModel {

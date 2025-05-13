@@ -50,6 +50,7 @@ public class EstoqueView extends JFrame {
         }
 
 
+
         setLayout(new BorderLayout(10, 10));
         initLookAndFeel();
         initComponents();
@@ -574,6 +575,8 @@ public class EstoqueView extends JFrame {
             return false;
         }
     }
+
+
 
     // Classe interna ModeloTabelaMovimentacoes
     class ModeloTabelaMovimentacoes extends DefaultTableModel {

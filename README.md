@@ -1,4 +1,4 @@
-# VistaTech ERP
+# VistaTech ERP <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="40" height="40" /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="40" height="40" />
 
 ## 📌 Sobre o Projeto
 
@@ -14,8 +14,6 @@ O VistaTech ERP busca oferecer uma solução integrada para a administração de
 - **MySQL** → Banco de dados para armazenar informações do sistema
 - **Maven** → Gerenciamento de dependências e build
 - **MVC (Model-View-Controller)** → Arquitetura para organização do código
-
-
 
 ## 📌 Principais Funcionalidades
 
@@ -72,6 +70,3 @@ Este projeto é de código aberto e está disponível sob a licença **MIT**.
 ### 📢 VistaTech ERP — Transformando Gestão Empresarial
 
 🔹 Projeto acadêmico desenvolvido para aprimorar a administração de óticas e expandir para novos negócios.
-
-
-

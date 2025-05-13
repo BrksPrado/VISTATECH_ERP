@@ -8,29 +8,75 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c78edeb0-a5d8-433d-886d-8a5af9479b7b" name="Changes" comment="Commit final dos módulos de Cadastro de produto e Estoque - 21/03">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/View/FinanceiroView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/Connection/DBconnectionConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/Connection/DBconnectionConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/Main/LoginScreenMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/Main/LoginScreenMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/Model/CadProdutoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/Model/CadProdutoModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Functions/DataBaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Functions/DataBaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MainScreen/MainScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainScreen/MainScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/Connection/DataBaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/Connection/DataBaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/Main/MainScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/Main/MainScreenView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/View/CadProdutoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/View/CadProdutoView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/View/EstoqueView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/View/EstoqueView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/View/MainScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/Main/MainScreenView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Connection/DBconnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CadCliente/ClientView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CadCliente/ClientView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CadUsuario/UserView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CadUsuario/UserView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CadUsuario/UserView$ModeloTabela.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CadUsuario/UserView$ModeloTabela.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CadUsuario/UserView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CadUsuario/UserView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Functions/DataBaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Functions/DataBaseConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Functions/MachineSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Functions/MachineSettings.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/LoginScreen/LoginScreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LoginScreen/LoginScreen$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/LoginScreen/LoginScreen$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LoginScreen/LoginScreen$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/LoginScreen/LoginScreen$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LoginScreen/LoginScreen$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/LoginScreen/LoginScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LoginScreen/LoginScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MainScreen/MainScreenView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainScreen/MainScreenView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MainScreen/MainScreenView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainScreen/MainScreenView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MainScreen/MainScreenView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainScreen/MainScreenView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MainScreen/MainScreenView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainScreen/MainScreenView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Connection/DBconnectionConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Connection/DBconnectionConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Connection/DataBaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Connection/DataBaseConnection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Controller/CadProdutoController$AdicionarListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Controller/CadProdutoController$AdicionarListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Controller/CadProdutoController$AtualizarListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Controller/CadProdutoController$AtualizarListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Controller/CadProdutoController$LimparListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Controller/CadProdutoController$LimparListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Controller/CadProdutoController$RemoverListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Controller/CadProdutoController$RemoverListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Controller/CadProdutoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Controller/CadProdutoController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Controller/EstoqueController$PesquisarListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Controller/EstoqueController$PesquisarListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Controller/EstoqueController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Controller/EstoqueController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/GettersSetters/Produto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/GettersSetters/MovimentacaoEstoque.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/GettersSetters/MovimentacaoEstoque.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/GettersSetters/ProductEstoque.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/GettersSetters/ProductEstoque.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/GettersSetters/ProdutoEstoque.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/GettersSetters/ProdutoEstoque.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Main/LoginScreenMain$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Main/LoginScreenMain$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Main/LoginScreenMain$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Main/LoginScreenMain$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Main/LoginScreenMain$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Main/LoginScreenMain$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Main/LoginScreenMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Main/LoginScreenMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Main/MainScreenView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Main/MainScreenView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Main/MainScreenView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Main/MainScreenView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Main/MainScreenView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Main/MainScreenView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Main/MainScreenView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Main/MainScreenView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Main/RelatorioProdutosMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Main/RelatorioProdutosMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Model/CadProdutoModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Model/CadProdutoModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Model/EstoqueModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Model/EstoqueModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Service/RelatorioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Service/RelatorioService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Settings/MachineSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Settings/MachineSettings.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/Util/PopulaBancoDadosUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/Util/PopulaBancoDadosUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/CadProdutoView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/CadProdutoView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/CadProdutoView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/CadProdutoView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/CadProdutoView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/CadProdutoView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/CadProdutoView$Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/CadProdutoView$Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/CadProdutoView$ModeloTabela.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/CadProdutoView$ModeloTabela.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/CadProdutoView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/CadProdutoView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/CaixaTesteView$VenderListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/CaixaTesteView$VenderListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/CaixaTesteView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/CaixaTesteView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/ClientView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/ClientView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/EstoqueView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/EstoqueView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/EstoqueView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/EstoqueView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/EstoqueView$IconCellRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/EstoqueView$IconCellRenderer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/EstoqueView$Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/EstoqueView$Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/EstoqueView$ModeloTabela.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/EstoqueView$ModeloTabela.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/EstoqueView$ModeloTabelaMovimentacoes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/EstoqueView$ModeloTabelaMovimentacoes.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/EstoqueView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/EstoqueView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/UserView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/UserView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/UserView$ModeloTabela.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/UserView$ModeloTabela.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/UserView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/UserView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,40 +143,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.CadProdutoView$Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CadastroClienteView.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CadastroClientesView.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ClientView.executor&quot;: &quot;Run&quot;,
-    &quot;Application.EstoqueView$Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LoginScreenMain.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainScreenView.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PopulaBancoDados.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PopulaBancoDadosView.executor&quot;: &quot;Run&quot;,
-    &quot;Application.RelatorioEstoqueMain.executor&quot;: &quot;Run&quot;,
-    &quot;Application.UserView.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.vistatech.estoque.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.vistatech.relatorio.RelatorioEstoqueMain.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/VistaTechERP&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CadProdutoView$Main.executor": "Run",
+    "Application.CadastroClienteView.executor": "Run",
+    "Application.CadastroClientesView.executor": "Run",
+    "Application.ClientView.executor": "Run",
+    "Application.EstoqueView$Main.executor": "Run",
+    "Application.FinanceiroMain.executor": "Run",
+    "Application.LoginScreen.executor": "Run",
+    "Application.LoginScreenMain.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MainScreenView.executor": "Run",
+    "Application.PopulaBancoDados.executor": "Run",
+    "Application.PopulaBancoDadosView.executor": "Run",
+    "Application.RelatorioEstoqueMain.executor": "Run",
+    "Application.UserView.executor": "Run",
+    "Application.com.vistatech.estoque.Main.executor": "Run",
+    "Application.com.vistatech.relatorio.RelatorioEstoqueMain.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.codeium.enabled": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/vitorio/OneDrive/Documentos/Projeto_Sites/java/Pessoais/VISTATECH_ERP-Estoque",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\vitorio\OneDrive\Documentos\Projeto_Sites\java\Pessoais\VTERP-Estoque\src\main\resources" />
@@ -140,7 +191,7 @@
       <recent name="com.vistatech.Controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CadProdutoView$Main">
+  <component name="RunManager">
     <configuration name="CadProdutoView$Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vistatech.View.CadProdutoView$Main" />
       <module name="VTERP-Estoque" />
@@ -201,14 +252,6 @@
         <item itemvalue="Application.RelatorioEstoqueMain" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.189" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.189" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
