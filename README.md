@@ -47,7 +47,7 @@ O sistema segue a arquitetura **MVC (Model-View-Controller)**, garantindo a sepa
 
 1. Criar um banco de dados MySQL:
 
-2) Importar o esquema do banco de dados presente no diretório `/database`.
+2) Importar o esquema do banco de dados presente no diretório `/database`
 
 ### 3️⃣ Executar a Aplicação
 
