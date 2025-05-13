@@ -21,6 +21,8 @@ public class LoginScreenMain extends JFrame {
         setResizable(false);
         setIconImage(new ImageIcon(getClass().getClassLoader().getResource("logotipo.png")).getImage());
 
+        initLookAndFeel();
+
         // Painel principal
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
@@ -157,7 +159,7 @@ public class LoginScreenMain extends JFrame {
     }
     private void initLookAndFeel() {
         try {
-            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+            UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -7,7 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c78edeb0-a5d8-433d-886d-8a5af9479b7b" name="Changes" comment="Commit final dos módulos de Cadastro de produto e Estoque - 21/03" />
+    <list default="true" id="c78edeb0-a5d8-433d-886d-8a5af9479b7b" name="Changes" comment="Commit final dos módulos de Cadastro de produto e Estoque - 21/03">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/Main/LoginScreenMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/Main/LoginScreenMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/View/ClientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/View/ClientView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/ClientView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/ClientView.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,7 +103,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/VistaTechERP&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/VistaTech&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -206,6 +212,12 @@
       <workItem from="1742610017733" duration="2332000" />
       <workItem from="1742612556243" duration="38000" />
       <workItem from="1742612600808" duration="2051000" />
+      <workItem from="1746487448170" duration="79000" />
+      <workItem from="1746487655599" duration="943000" />
+      <workItem from="1746491495846" duration="3688000" />
+      <workItem from="1746803891031" duration="243000" />
+      <workItem from="1747172004227" duration="3000" />
+      <workItem from="1747177520962" duration="2500000" />
     </task>
     <task id="LOCAL-00002" summary="Atualizações Módulo Estoque - 12/03">
       <option name="closed" value="true" />
