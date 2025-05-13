@@ -13,6 +13,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/Main/LoginScreenMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/Main/LoginScreenMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vistatech/View/ClientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vistatech/View/ClientView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vistatech/View/ClientView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vistatech/View/ClientView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MainScreen/MainScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainScreen/MainScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +80,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.CadProdutoView$Main.executor&quot;: &quot;Run&quot;,
@@ -111,7 +113,7 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
+
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -183,14 +185,6 @@
         <item itemvalue="Application.RelatorioEstoqueMain" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.189" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.189" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
