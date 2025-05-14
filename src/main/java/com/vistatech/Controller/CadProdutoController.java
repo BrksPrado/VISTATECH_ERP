@@ -3,6 +3,7 @@ package com.vistatech.Controller;
 import com.vistatech.View.CadProdutoView;
 import com.vistatech.GettersSetters.ProdutoEstoque;
 import com.vistatech.Model.CadProdutoModel;
+import com.vistatech.Model.FinanceiroModel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -12,6 +13,7 @@ import java.util.List;
 public class CadProdutoController {
     private CadProdutoModel model;
     private CadProdutoView view;
+    private final FinanceiroModel financeiroModel = new FinanceiroModel(); // Instância do modelo financeiro
 
     public CadProdutoController(CadProdutoModel model, CadProdutoView view) {
         this.model = model;
@@ -42,6 +44,18 @@ public class CadProdutoController {
                 if (cadastroConfirmado) {
                     view.adicionarProdutoTabela(produtoEstoque); // Adicionar à tabela apenas após confirmação
                     view.limparFormulario();
+
+                    // Adiciona a entrada no financeiro
+                    Object[] movimentacaoFinanceira = {
+                        null, // ID será gerado automaticamente
+                        "Cadastro Produto: " + produtoEstoque.getNome(),
+                        produtoEstoque.getPrecoCusto() * produtoEstoque.getQuantidade(),
+                        new java.util.Date().toString(),
+                        "ENTRADA",
+                        "Cadastro inicial do produto",
+                        "Sistema"
+                    };
+
                 }
             }
         }

@@ -121,7 +121,7 @@ public class MainScreenView extends JFrame {
             if (module.equals("Financeiro")) {
                 button.addActionListener(e -> {
                     FinanceiroView financeiroView = new FinanceiroView();
-                    new FinanceiroModel(); 
+                    new FinanceiroModel();
                     new FinanceiroController(financeiroView);
                     financeiroView.setVisible(true);
                 });
