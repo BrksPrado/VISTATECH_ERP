@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c78edeb0-a5d8-433d-886d-8a5af9479b7b" name="Changes" comment="Commit final dos módulos de Cadastro de produto e Estoque - 21/03" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;author&quot;: &quot;GusCfer&quot;
+    }
+  ],
+  &quot;lastFilter&quot;: {
+    &quot;author&quot;: &quot;GusCfer&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/BrksPrado/VISTATECH_ERP.git&quot;,
+    &quot;accountId&quot;: &quot;253b4ff9-1f85-4747-a2a5-2c4bd059484c&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/Controller/EstoqueController.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/GettersSetters/MovimentacaoEstoque.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/GettersSetters/Produto.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/GettersSetters/ProdutoEstoque.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/Main/LoginScreenMain.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/Main/MainScreenView.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/Main/RelatorioProdutosMain.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/Model/CadProdutoModel.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/Service/RelatorioService.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/Settings/MachineSettings.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/Util/PopulaBancoDadosUtil.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/View/CadProdutoView.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/View/CaixaTesteView.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/View/ClientView.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/vistatech/View/EstoqueView.java" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2uDWnfhQlcWfpEQb0mZp5eIZDq2" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CadProdutoView$Main.executor": "Run",
+    "Application.CadastroClienteView.executor": "Run",
+    "Application.CadastroClientesView.executor": "Run",
+    "Application.ClientView.executor": "Run",
+    "Application.EstoqueView$Main.executor": "Run",
+    "Application.LoginScreenMain.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MainScreenView.executor": "Run",
+    "Application.PopulaBancoDados.executor": "Run",
+    "Application.PopulaBancoDadosView.executor": "Run",
+    "Application.RelatorioEstoqueMain.executor": "Run",
+    "Application.UserView.executor": "Run",
+    "Application.com.vistatech.Main.Main.executor": "Run",
+    "Application.com.vistatech.estoque.Main.executor": "Run",
+    "Application.com.vistatech.relatorio.RelatorioEstoqueMain.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.codeium.enabled": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Code Local/PROJETOS ACADÊMICOS/VISTATECH_ERP",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vitorio\OneDrive\Documentos\Projeto_Sites\java\Pessoais\VTERP-Estoque\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.vistatech.Model" />
+      <recent name="com.vistatech.Controller" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="CadProdutoView$Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.vistatech.View.CadProdutoView$Main" />
+      <module name="VTERP-Estoque" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vistatech.Main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EstoqueView$Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.vistatech.View.EstoqueView$Main" />
+      <module name="VTERP-Estoque" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vistatech.Controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.estoque.Main" />
+      <module name="VTERP-Estoque" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.estoque.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RelatorioEstoqueMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.relatorio.RelatorioEstoqueMain" />
+      <module name="VTERP-Estoque" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.relatorio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CadProdutoView$Main" />
+        <item itemvalue="Application.EstoqueView$Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.RelatorioEstoqueMain" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="ROBERTO DORFIM DA SILVA">
+      <option name="closed" value="true" />
+      <created>1741743318545</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1741743318545</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c78edeb0-a5d8-433d-886d-8a5af9479b7b" name="Changes" comment="ROBERTO DORFIM DA SILVA" />
+      <created>1741783794769</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741783794769</updated>
+      <workItem from="1742602463013" duration="2241000" />
+      <workItem from="1742610017733" duration="2332000" />
+      <workItem from="1742612556243" duration="38000" />
+      <workItem from="1742612600808" duration="2051000" />
+      <workItem from="1747266788438" duration="1194000" />
+    </task>
+    <task id="LOCAL-00002" summary="Atualizações Módulo Estoque - 12/03">
+      <option name="closed" value="true" />
+      <created>1741786326737</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1741786326737</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add v1. Relatório Estoque - 12/03">
+      <option name="closed" value="true" />
+      <created>1741827932854</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1741827932854</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Adição combo box &quot;tipo&quot; - 13/03">
+      <option name="closed" value="true" />
+      <created>1741910766419</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1741910766419</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ROBERTO DORFIM DA SILVA" />
+    <MESSAGE value="Atualizações Módulo Estoque - 12/03" />
+    <MESSAGE value="Add v1. Relatório Estoque - 12/03" />
+    <MESSAGE value="Adição combo box &quot;tipo&quot; - 13/03" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adição combo box &quot;tipo&quot; - 13/03" />
+  </component>
+</project>
